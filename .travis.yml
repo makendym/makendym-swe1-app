@@ -6,16 +6,20 @@ python:
 install:
   - pip install -r requirements.txt
 # command to run tests
+before_script:
+  - python manage.py migrate
 script:
   - pytest
 
 deploy:
   provider: elasticbeanstalk
   access_key_id:
-    secure: "Encrypted <access-key-id>="
+    secure: "AKIAQ5BPQNKDDLWJT4WI"
   secret_access_key:
-    secure: "Encypted <secret-access-key>="
+    secure: "KUxiPEnn1SHYoGbHSdDoO/KVrtiDoeLuS2FXOTtF"
   region: "us-east-1"
-  app: "example-app-name"
-  env: "example-app-environment"
-  bucket_name: "the-target-S3-bucket"
+  app: "django-tutorial"
+  env: "django-env"
+  bucket_name: "myawsbucket-django-tutorial"
+
+  only_create_app_version: "true"
