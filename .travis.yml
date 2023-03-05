@@ -9,7 +9,9 @@ install:
 before_script:
   - python manage.py migrate
 script:
-  - pytest
+  - black --check .
+  - flake8 .
+  - coverage run --source="." manage.py test
 
 deploy:
   provider: elasticbeanstalk
