@@ -9,7 +9,7 @@ install:
 before_script:
   - python manage.py migrate
 script:
-  - black --check 
+  - black --check .
   - flake8 .
   - coverage run --source="." manage.py test
 
