@@ -13,6 +13,9 @@ script:
   - flake8 .
   - coverage run --source="." manage.py test
 
+after_script:
+  - coveralls
+
 deploy:
   provider: elasticbeanstalk
   access_key_id: $awskey
